@@ -1,0 +1,11 @@
+# Re-Deploy a revision every X minuuites
+*/30 * * * * /usr/bin/curl -X POST -H "Content-Type: application/json"  -u cron_user:123 -d '{"PipelineTemplateID":"1","RevisionID":"2"}' http://127.0.0.1:9292/api/deployments
+
+# Destroy
+* */1 * * * /usr/bin/curl -X DELETE -H "Content-Type: application/json"  -u cron_user:123  http://127.0.0.1:9292/api/deployments
+
+
+# Deploy new versions or failed deployments by cron_user
+*/30 * * * * /usr/bin/curl -X POST -H "Content-Type: application/json"  -u cron_user:123 -d '{"PipelineTemplateID":"1"}' http://127.0.0.1:9292/api/deployments
+
+
